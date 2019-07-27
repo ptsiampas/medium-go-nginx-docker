@@ -9,6 +9,9 @@ import (
 )
 
 func main() {
+	port := flag.Int("port", 8080, "Port to run on")
+	flag.Parse()
+	
 	router := mux.NewRouter()
 	router.HandleFunc("/", DoHealthCheck).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
